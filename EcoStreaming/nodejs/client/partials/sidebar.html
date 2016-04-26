@@ -1,0 +1,40 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+			<a href="">Profile of <b>{{customer.username}}</b></a>
+    </li>
+    <li>
+			<a href=""><input type="email" ng-model="customer.email" class="nav-input" placeholder="Email" ng-keydown="emailMissing=false"></a>
+			<div class="help-block alert alert-danger" ng-show="emailMissing">Email cannot be empty!</div>
+    </li>
+    <li>
+			<a href=""><input type="text" ng-model="customer.firstName" class="nav-input" placeholder="First name"></a>
+    </li>
+    <li>
+			<a href=""><input type="text" ng-model="customer.lastName" class="nav-input" placeholder="Last name"></a>
+    </li>
+    <li>
+			<a href=""><input type="text" ng-model="customer.streetAddress" class="nav-input" placeholder="Address"></a>
+    </li>
+    <li>
+			<a href=""><input type="text" ng-model="customer.city" class="nav-input" placeholder="City"></a>
+    </li>
+    <li>
+			<a href=""><input type="text" ng-model="customer.state" class="nav-input" placeholder="State"></a>
+    </li>
+    <li>
+			<a href=""><input type="text" ng-model="customer.zipcode" class="nav-input" placeholder="Postal code"></a>
+    </li>
+    <li>
+			<a href=""><input type="tel" ng-model="customer.phone" class="nav-input" placeholder="Phone"></a>
+    </li>
+    <li>
+    	Scale Preference
+    	<select class="form-control nav-select" ng-model="scale" ng-options="scale.name for scale in SCALE" ng-change="onScaleSelected(scale.value)"></select>
+    </li>
+    <li>
+    	<div class="divider-full"></div>
+    	<button class="btn btn-default nav-btn" ng-click="update()"><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+    </li>
+  </ul>
+</div>

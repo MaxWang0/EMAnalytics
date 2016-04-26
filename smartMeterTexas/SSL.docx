@@ -1,0 +1,59 @@
+soapui version:5.2.1
+Configuration please refer to SoapUI configuration.docx
+check the expiration date:
+openssl x509 -enddate -noout -in ecomottotest.pem
+check if expired:
+openssl verify ecomottotest.pem
+add pem certificate and private key to p12 certificate:
+openssl pkcs12 -export -out fullchain2.p12 -inkey privkey1.pem -in fullchain1.pem
+openssl pkcs12 -export -out fullchain5.p12 -inkey ecomottotest.key -in ecomottotest.pem
+P12 to JKS:
+keytool -importkeystore -srckeystore fullchain1.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore ecomottotest_CA1.jks
+keytool -importkeystore -srckeystore fullchain5.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore ecomottotest_CA2.jks
+create csr from private key:
+openssl req -new -key server.key -out server.csr
+create self-signed certificate:
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+import pgp public and private key to GPG:
+sudo gpg --import PGPpublickey
+sudo gpg --allow-secret-key-import --import secret-key-364DD208.asc
+decrypt pgp file:
+sudo gpg --output IntervalMeterUsagef00267b3fe8032667ac611b8.zip --decrypt IntervalMeterUsagef00267b3fe8032667ac611b8.CSV.079709864.asc
+lftp -e 'set ftp:ssl-force true; set ssl:verify-certificate no; mirror ./  /home/emotto_user2/ftpdata/smartmeter/' -u ecomotto,pa55wordeco ftp.smartmetertexas.biz
+convert jks to p12:
+keytool -importkeystore -srckeystore ecomottotest_CA2.jks -destkeystore myapp.p12 -srcstoretype jks -deststoretype pkcs12
+Generate a CA:
+openssl req -new -x509 -days 3650 -extensions v3_ca \
+-keyout cakey.pem -out cacert.pem -config /etc/ssl/openssl.cnf \
+-newkey rsa:2048
+Generate a server key and signing request:
+openssl req -new -nodes -out server-csr.pem -keyout server-key.pem -newkey rsa:2048
+Sign the request with the CA:
+openssl ca -config /etc/ssl/openssl.cnf -cert cacert.pem -keyfile cakey.pem \
+-out server-cert.pem -in server-csr.pem
+Export the server cert to PKCS#12:
+openssl pkcs12 -export -out server-key-cert.pfx \
+-inkey server-key.pem -in server-cert.pem -certfile cacert.pem
+check the information in p12:
+openssl pkcs12 -info -in ecomottotest.p12
+check the information in crt:
+openssl x509 -in ecomottotest.crt -text -noout
+Create the Root Key:
+openssl genrsa -out rootCA.key 2048
+
+FTP URL : ftp.smartmetertexas.biz
+UserId   :  ecomotto
+Passwd: pa55wordeco
+
+API account
+
+LoginId : ecomottoapi
+Passwd: pa55word
+
+
+SOAPUI configuration:
+create jks file from p12
+password: 8708165Xx!
+keytool -importkeystore -deststorepass MY-KEYSTORE-PASS -destkeystore my-keystore.jks -srckeystore ecomottotest.p12 -srcstoretype PKCS12
+
+

@@ -1,0 +1,12 @@
+1. Create the root key:
+openssl genrsa -out rootCA.key 2048
+2. Create csr from private key:
+openssl req -new -key server.key -out server.csr
+3. Create self-signed certificate:
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+4. transform to pem form
+cp server.crt server.pem
+5. Generate P12
+openssl pkcs12 -export -out fullchain5.p12 -inkey ecomottotest.key -in ecomottotest.pem
+6. Generate the jks file for soapui:
+keytool -importkeystore -srckeystore fullchain5.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore ecomottotest_CA2.jks

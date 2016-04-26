@@ -1,0 +1,60 @@
+<!-- <p>This house has no thermostat. Register our devices using our <a href="#/mobile_app">mobile app</a> now!</p> -->
+<div class="card thermostat-card" ng-repeat="thermostat in thermostats | matchHouseId:currentHouseId">
+	<div class="card-heading simple">
+			<input type="text" ng-model="thermostat.name" style="border: none;">
+			<h6>* Click on the title to edit thermostat's name</h6>
+	</div>
+
+  <div class="card-body">
+  	<form name="form" class="form" novalidate>
+  		<div class="form-group">
+		    <label for="" class="control-label">Room temperature: {{thermostat.roomTemperature}}</label>
+		    <br/>
+		    <label for="" class="control-label">Room humidity: {{thermostat.roomHumidity}} %</label>
+		    <br/>
+		    <label for="" class="control-label">Running: {{thermostat.running}}</label>
+  		</div>
+
+	    <div class="form-group">
+	    	<label for="" class="control-label"><font color="blue">Cool temperature:</font></label>
+	    	<input type="text" class="form-control" ng-model="thermostat.coolTemperature">
+	    </div>
+	    <div class="form-group">
+	    	<label for="" class="control-label"><font color="red">Heat temperature:</font></label>
+	    	<input type="text" class="form-control" ng-model="thermostat.heatTemperature">
+	    </div>
+	    <div class="form-group">
+	    	<label for="" class="control-label"><font color="green">Cycle temperature:</font></label>
+	    	<input type="text" class="form-control" ng-model="thermostat.cycleTemperature">
+	    </div>
+
+			<span class="modes">
+				<div class="form-group" id="fan-mode">
+					<label for="" class="control-label">Fan mode</label>
+					<select class="form-control" ng-model="thermostat.fanMode">
+				    <option ng-repeat="mode in FAN_MODES">{{mode}}</option>
+				  </select>
+				 </div>
+				 <div class="form-group" id="control-mode">
+					<label for="" class="control-label">Control mode</label>
+					<select class="form-control" ng-model="thermostat.controlMode">
+				    <option ng-repeat="mode in CONTROL_MODES">{{mode}}</option>
+				  </select>
+				 </div>
+				 <div class="form-group" id="system-mode">
+					<label for="" class="control-label">System mode</label>
+					<select class="form-control" ng-model="thermostat.systemMode">
+				    <option ng-repeat="mode in SYSTEM_MODES">{{mode}}</option>
+				  </select>
+				 </div>
+			</span>
+		</form>
+
+		<div class="divider-short"></div>
+	  <div class="card-footer">
+	  	<button class="btn btn-default float-left" ng-click="update(thermostat)"><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+	  	<button class="btn btn-default" ng-click="delete(thermostat.thermostatId)"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+	  	<button class="btn btn-default" type="button" ng-click="onScheduleSelected(thermostat.macAddress)"><span class="glyphicon glyphicon-calendar"></span> Schedule</button>
+	  </div>
+  </div>
+</div>

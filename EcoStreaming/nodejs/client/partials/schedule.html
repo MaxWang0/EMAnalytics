@@ -1,0 +1,49 @@
+<div ng-init="retrieve()">
+  <div class="modal-header">
+    <h3 class="modal-title">Schedule</h3>
+  </div>
+  <div class="modal-body">
+    <tabset>
+      <tab ng-repeat="date in DATE track by $index" select="onSelectTab($index)">
+        <tab-heading>{{date}}</tab-heading>
+
+        <!-- Timeline -->
+        <div id="schedule-container" class="container">
+          <ul class="timeline">
+            <li ng-animate="'animate'" ng-class="{'timeline-inverted': $index % 2 == 1}" ng-repeat="schedule in filteredSchedules track by $index">
+              <div class="timeline-badge info"><i class="glyphicon" ng-class="{'glyphicon-chevron-right': $index % 2 == 1, 'glyphicon-chevron-left': $index % 2 == 0}"></i></div>
+              <div class="timeline-panel">
+                <!-- Timeline Body -->
+                <div class="timeline-body">
+                  <!-- Start Time -->
+                  <div id="start-time-panel" class="float-left" ng-controller="ScheduleStartTimeController" ng-init="init()">
+                    <timepicker ng-model="startTimeEntered" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="false"></timepicker>
+                  </div>
+
+                  <!-- Temperatures -->
+                  <div class="temperature-panel" ng-controller="ScheduleTemperatureController" ng-init="init()">
+                    <div class="no-float"><span><font color="blue">Cool Temperature: </font><input type="number" ng-change="changed()" ng-model="coolEntered"></span></div>
+                    <div class="no-float"><span><font color="red">Heat Temperature: </font><input type="number" ng-change="changed()" ng-model="heatEntered"></span></div>
+                    <div class="no-float"><span><font color="green">Cycle Temperature: </font><input type="number" ng-change="changed()" ng-model="cycleEntered"></span></div>
+                  </div>
+
+                  <!-- Function buttons -->
+                  <div>
+                    <button class="btn btn-default schedule-btn" ng-click="update(schedule)"><i class="glyphicon glyphicon-save"></i></button>
+                    <button class="btn btn-default schedule-btn" ng-click="delete(schedule.scheduleId)"><i class="glyphicon glyphicon-trash"></i></button>
+                  </div>
+
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </tab>
+    </tabset>
+    <button id="schedule-create-btn" class="btn btn-fab btn-fab-primary" ng-click="create()"><i class="glyphicon glyphicon-plus"></i></button>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-default" ng-click="close()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="form" ng-controller="LoginController" ng-init="isSignedIn()">
+<!-- <div class="form" ng-init="isSignedIn()"> -->
+    <div class="alert-center">
+        <div class="alert alert-danger" ng-show="wrongCredentials">Wrong Credentials!</div>
+        <div class="alert alert-success" ng-show="registerSuccess">Registration success!</div>
+        <div class="alert alert-danger" ng-show="registerFailed">Registration failed!</div>
+    </div>
+    <form name="form" class="form-signin" novalidate>
+        <!-- Username -->
+        <div class="form-group">
+            <label for="" class="control-label">Username</label>
+            <input class="form-control" type="text" ng-model="user.username" name="uName" required="" />
+            <div class="help-block" ng-show="form.$submitted || form.uName.$touched">
+                <div ng-show="form.uName.$error.required"><font color="red">Username is required.</font></div>
+            </div>
+        </div>
+        <!-- Password -->
+        <div class="form-group">
+            <label for="" class="control-label">Password</label>
+            <input class="form-control" type="password" ng-model="user.password" name="uPass" required="" />
+            <div class="help-block" ng-show="form.$submitted || form.uPass.$touched">
+                <span ng-show="form.uPass.$error.required"><font color="red">Password is required.</font></span>
+            </div>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+            <label for="" class="control-label">Email</label>
+            <input class="form-control" type="email" ng-model="user.email" name="uEmail" required="" />
+            <div class="help-block" ng-show="form.$submitted || form.uEmail.$touched">
+                <span ng-show="form.uEmail.$error.required"><font color="red">Email is required.</font></span>
+            </div>
+        </div>
+        <!-- Button -->
+        <input class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(user)" value="Sign In">
+        <input class="btn btn-lg btn-primary btn-block" type="submit" ng-click="register(user)" value="Register">
+    </form>
+</div>

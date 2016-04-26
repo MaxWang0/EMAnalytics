@@ -1,0 +1,32 @@
+<!-- <div ng-controller='DataController'>
+<div linear-chart chart-data="priceData.promise"></div>
+</div> -->
+
+
+
+
+  <div ng-controller="MyCtrl">
+      <!-- <div ng-repeat="price in priceData"> -->
+          settlementpoint:
+          <select
+              ng-model="priceData.settlementpoint"
+              ng-options="state.settlementpoint for state in priceData"></select><br>
+
+          Date:<br>
+          <input type="text" ng-model="date" datepicker />
+          {{ date }}
+          <br>
+          Time:
+          <select
+              ng-model="TimeData.DT"
+              ng-options="time.DT for time in TimeData"></select>
+
+
+
+              <!-- <p>Date: <input type="date" id="datepicker"></p> -->
+
+
+          <!-- <tt>State selected: {{price.lmp5}}</tt>
+      </div> -->
+
+  </div>

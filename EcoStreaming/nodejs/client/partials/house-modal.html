@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body">
+    <form name="form" class="form" novalidate>
+      <!-- Name -->
+      <div class="form-group">
+            <label for="" class="control-label">Name</label>
+            <input class="form-control" type="text" ng-model="thisHouse.name" name="uName" required="" />
+            <div class="help-block" ng-show="form.$submitted || form.uName.$touched">
+                <div ng-show="form.uName.$error.required"><font color="red">Name is required.</font></div>
+            </div>
+        </div>
+        <!-- Address -->
+        <div class="form-group">
+            <label for="" class="control-label">Address</label>
+            <input class="form-control" type="text" ng-model="thisHouse.streetAddress"/>
+        </div>
+        <!-- City -->
+        <div class="form-group">
+            <label for="" class="control-label">City</label>
+            <input class="form-control" type="text" ng-model="thisHouse.city"/>
+        </div>
+        <!-- State -->
+        <div class="form-group">
+            <label for="" class="control-label">State</label>
+            <input class="form-control" type="text" ng-model="thisHouse.state"/>
+        </div>
+        <!-- Postal Code -->
+        <div class="form-group">
+            <label for="" class="control-label">Postal Code</label>
+            <input class="form-control" type="text" ng-model="thisHouse.zipcode"/>
+        </div>
+        <!-- Time zone -->
+        <div class="form-group">
+            <label for="" class="control-label">Time zone</label>
+            <input class="form-control" type="text" ng-model="thisHouse.timezone"/>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

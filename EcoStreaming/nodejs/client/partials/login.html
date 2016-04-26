@@ -1,0 +1,116 @@
+<div id="content-wrapper" class="ui center aligned container">
+	<div class="ui two column middle aligned stackable very relaxed grid segment shadowbox login-form">
+<!-- 		class="ui two column middle aligned very relaxed stackable grid login-form" -->
+		<div class="column ui stacked" ng-controller="LoginController" ng-init="isSignedIn()">
+				<h2 class="banner">
+					Sign in to your account
+				</h2>
+<!-- 				<div class="ui grid">  -->
+<!-- 				<div class="column"> -->
+
+				<form name="form" class="ui large form" novalidate>
+					<div class="">
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="user icon"></i>
+								<input type="text"	placeholder="User Name" name="uName" ng-model="user.username" required="">
+							</div>
+							<div class="ui label helper-label right pad-t8 pad-b8 pad-r0">
+								<a class="anchor detail helper-text-red">forgot username?</a>
+							</div>
+							<div class="login help-block" ng-show="form.$submitted || form.uName.$touched">
+				                <div ng-show="form.uName.$error.required"><font color="red">Username is required.</font></div>
+				            </div>
+						</div>
+						<div class="field">
+							<div class="ui left icon input">
+								<i class="lock icon"></i>
+								<input type="password"	placeholder="Password" ng-model="user.password" name="uPass" required="">
+							</div>
+							<div class="ui label helper-label right pad-t8 pad-b8 pad-r0">
+								<a class="anchor detail helper-text-red" >forgot password?</a>
+							</div>
+							<div class="login help-block" ng-show="form.$submitted || form.uPass.$touched">
+				                <span ng-show="form.uPass.$error.required"><font color="red">Password is required.</font></span>
+				            </div>
+						</div>
+						<div class="ui fluid large blue submit button" ng-click="login(user)">Login</div>
+						<div class="field">
+							 <div id="cb_rememberme" class="ui checkbox left pad-t8">
+							 	<input type="checkbox">
+							    <label>Remember me</label>
+							 </div>
+
+	  					</div>
+					</div>
+				</form>
+
+				</div>
+
+				<div class="ui vertical divider">
+				Or
+				</div>
+				<div class="center aligned column">
+					 <div class="ui big green labeled icon button" onclick="$('#signup-modal').modal('show');">
+				      <i class="signup icon"></i>
+				      Sign Up
+				    </div>
+				</div>
+
+				<div id="signup-modal" class="ui small modal">
+				  <div class="header">Register a new account</div>
+				  <div class="content" ng-controller="RegisterController">
+                      <div class="">
+                         <div class="alert alert-danger" ng-show="wrongCredentials">Wrong Credentials!</div>
+                         <div class="alert alert-success" ng-show="registerSuccess">Registration success!</div>
+                         <div class="alert alert-danger" ng-show="registerFailed">Registration failed!</div>
+                     </div>
+				     <form id="signup-form" class="ui form">
+				     <div class="two fields">
+						  <div class="required field">
+						    <label>First Name</label>
+						    <input name="first-name" placeholder="First Name" type="text" ng-model="userRegister.firstname">
+						  </div>
+						  <div class="required field">
+						    <label>Last Name</label>
+						    <input name="last-name" placeholder="Last Name" type="text" ng-model="userRegister.lastname">
+						  </div>
+					  </div>
+					  <div class="two fields">
+						  <div class="required field">
+						    <label>User Name</label>
+						    <input name="username" placeholder="User Name" type="text" ng-model="userRegister.username">
+						  </div>
+						  <div class="required field">
+						    <label>Email</label>
+						    <input name="email" placeholder="Email" type="text" ng-model="userRegister.email">
+						  </div>
+					  </div>
+					  <div class="two fields">
+						  <div class="required field">
+						    <label>Password</label>
+						    <input name="password" placeholder="New Password" type="password" ng-model="userRegister.password">
+						  </div>
+						  <div class="required field">
+						    <label>Confirm Password</label>
+						    <input name="confirm-password" placeholder="Confirm Password" type="password" ng-model="userRegister.confirmedPassword">
+						  </div>
+					  </div>
+					  <div class="required field">
+					    <div class="ui checkbox">
+					      <input class="hidden" tabindex="0" type="checkbox">
+					      <label>I agree to the Terms and Conditions</label>
+					    </div>
+					  </div>
+					  <button id="btn-register-account" class="ui primary ok button" ng-click="register(userRegister)">Register</button>
+					</form>
+				  </div>
+				</div>
+
+
+	</div>
+
+</div>
+
+
+<!-- End Wrapper -->

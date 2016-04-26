@@ -1,0 +1,49 @@
+<div ng-controller="HomeController" ng-init="retrieve()">
+
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="http://ecomotto.com"><span class="glyphicon glyphicon-globe"></span> EcoMotto Inc.</a>
+			</div>
+			<div>
+				<!-- Left -->
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+					<li><a href="">About us</a></li>
+					<li><a href="">Products</a></li>
+					<li><a href="">Contact</a></li>
+				</ul>
+				<!-- Right -->
+				<ul class="nav navbar-nav navbar-right" ng-controller="CustomerSignOutController">
+        	<li><a href="" ng-click="toggle()"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        	<li><a href="" ng-click="signout()"><span class="glyphicon glyphicon-log-in"></span> Sign Out</a></li>
+      	</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Body containing house and thermostat info -->
+	<div id="wrapper" class="toggled">
+		<!-- SideBar -->
+		<sidebar-nav ng-controller="CustomerUpdateController"></sidebar-nav>
+
+		<!-- Main Content -->
+    <div id="page-content-wrapper">
+    	<!-- House -->
+			<div id="house-placeholder" ng-controller="HouseController">
+				<house-template></house-template>
+			</div>
+
+			<!-- Divider -->
+			<!-- <div align="left" class="divider"></div> -->
+			<hr/>
+
+			<!-- Thermostats -->
+			<div class="thermostat-placeholder" ng-controller="ThermostatController" ng-show="thermostats.length > 0">
+				<thermostat-template></thermostat-template>
+			</div>
+    </div>
+
+	</div>
+</div>

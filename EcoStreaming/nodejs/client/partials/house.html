@@ -1,0 +1,26 @@
+<!-- Buttons -->
+<button class="btn btn-default float-left" ng-click="openHouseCreateModal()"><span class="glyphicon glyphicon-plus"></span> Add</button>
+<button class="btn btn-default float-left" ng-click="openHouseUpdateModal()" ng-show="houses.length > 0"><span class="glyphicon glyphicon-pencil"></span>  Modify</button>
+<button class="btn btn-default float-left" ng-click="openHouseDeleteModal()" ng-show="houses.length > 0"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+
+<!-- Dropdown List -->
+<div ng-show="houses.length > 0" ng-controller="DropdownCtrl">
+    <div class="btn-group" dropdown is-open="status.isopen">
+        <button id="single-button" type="button" class="btn btn-default" dropdown-toggle ng-disabled="disabled">
+        {{houses[currentHouseIndex].name}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+            <li role="menuitem" ng-repeat="house in houses track by $index"><a href="#/home" ng-click="onSelectHouse($index)">{{house.name}}</a></li>
+        </ul>
+    </div>
+</div>
+<!-- Summary -->
+<!-- 
+<br/>
+<h4>House Summary</h4>
+<p>houseId: {{houses[currentHouseIndex].houseId}}</p>
+<p>Address: {{houses[currentHouseIndex].streetAddress}}</p>
+<p>City: {{houses[currentHouseIndex].city}}</p>
+<p>State: {{houses[currentHouseIndex].state}}</p>
+<p>Postal code: {{houses[currentHouseIndex].zipcode}}</p>
+<p>Timezone: {{houses[currentHouseIndex].timezone}}</p> -->

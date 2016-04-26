@@ -1,0 +1,56 @@
+Ecomotto Data Collection Workflow
+Web Data Engineer: Yu Wang
+
+1.	Java Downloader(HttpDownloadMain.java)
+Directory:
+/home/emotto_user2/JavaTextMining6/HttpDownloadMain.java
+/home/emotto_user2/JavaTextMining6/HttpDownloadFake.java
+/home/emotto_user2/JavaTextMining6/HttpDownloadUtility.java
+
+Description:
+Get URL address first from Ercot website
+1.	Get the HTML script
+2.	Parse the file link by searching the html tag
+3.	Download the whole file to the specific directory
+    1.	/home/emotto_user2/JavaTextMining6/data/temp_RTD_Indicative_LMPs
+    2.	/home/emotto_user2/JavaTextMining6/data/temp_LMPS_BY_Electrical_Bus
+    3.	/home/emotto_user2/JavaTextMining6/data/temp_LMPS_BY_Resource_Nodes
+    4.	/home/emotto_user2/JavaTextMining6/data/temp_SCED
+    5.	/home/emotto_user2/JavaTextMining6/data/temp_SPP
+    
+    Log file location: /home/emotto_user2/JavaTextMining6/data/logs/
+    
+2.	Mongodb importer and processor(zipToTempToMongo2.sh)
+
+Directory:
+/home/emotto_user2/mongo/zipToTempToMongo2.sh
+/home/emotto_user2/mongo/run.sh
+/home/emotto_user2/mongo/testcreatetable6.js
+
+Description:
+
+Import the ercot data and process in the mongodb
+
+1.	Unzip the data to the main folder separately:
+
+/home/emotto_user2/JavaTextMining6/data/RTD_Indicative_LMPs
+/home/emotto_user2/JavaTextMining6/data/LMPS_BY_Electrical_Bus
+/home/emotto_user2/JavaTextMining6/data/LMPS_BY_Resource_Nodes
+/home/emotto_user2/JavaTextMining6/data/SCED
+/home/emotto_user2/JavaTextMining6/data/SPP
+
+2.	Import the unzipped csv data to the mongodb (db: mydb, collection: ercotRTDtable)
+    Log file location: /home/emotto_user2/mongo/logs/unzipToMongoLogfile.log 
+    
+3.	Weather data download program:
+/home/emotto_user2/ftpdata/ftpdownloader.sh
+/home/emotto_user2/ftpdata/ftplogger.sh
+Logfile: /home/emotto_user2/ftpdata/ftplogfile.log
+Mongodb:
+ercotRTDtable: { "_id" : ObjectId("56c4b2a3089984cb57a27d3a"), "lmp5" : 17.71, "lmp10" : "", "lmp15" : "", "lmp20" : "", "lmp25" : "", "lmp30" : "", "lmp35" : "", "lmp40" : "", "lmp45" : "", "lmp50" : "", "lmp55" : "", "IRHF" : "N", "RTS" : ISODate("2016-01-17T00:05:00Z"), "SP" : 1, "SPT" : 1 }
+
+newtable2 field:
+RTDTimestamp, RepeatedHourFlag, IntervalId, IntervalEnding, IntervalRepeatedHourFlag, SettlementPoint, SettlementPointType, LMP 
+
+ercotProcessFile: 
+DownloadID, Date, Time, ProcessTime

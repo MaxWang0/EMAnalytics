@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="AdHocQueryStarterKit" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="WS_MeterUsageExp_INF_MeterUsageHttpBinding" type="wsdl" bindingName="{http://schemas.esb.ams.com/meterusagesource/Binding}WS_MeterUsageExp_INF_MeterUsageHttpBinding" soapVersion="1_1" anonymous="optional" definition="http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BIM_MeterUsage_WS_MeterUsageExp.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BIM_MeterUsage_WS_MeterUsageExp.wsdl"><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BIM_MeterUsage_WS_MeterUsageExp.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="WS_MeterUsageExp_INF_MeterUsageHttp_Service" targetNamespace="http://schemas.esb.ams.com/meterusagesource/Binding" xmlns:Port_0="http://schemas.esb.ams.com/meterusagesource" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:this="http://schemas.esb.ams.com/meterusagesource/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import location="INF_MeterUsage.wsdl" namespace="http://schemas.esb.ams.com/meterusagesource"/>
+  <wsdl:binding name="WS_MeterUsageExp_INF_MeterUsageHttpBinding" type="Port_0:INF_MeterUsage">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="processMeterUsage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="processMeterUsageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="processMeterUsageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeterUsageFaultResponse">
+        <soap:fault name="MeterUsageFaultResponse" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="processMeterUsageFile">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="processMeterUsageFileRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="processMeterUsageFileResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="MeterUsageFaultResponse">
+        <soap:fault name="MeterUsageFaultResponse" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_MeterUsageExp_INF_MeterUsageHttpService">
+    <wsdl:port binding="this:WS_MeterUsageExp_INF_MeterUsageHttpBinding" name="WS_MeterUsageExp_INF_MeterUsageHttpPort">
+      <soap:address location="http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/INF_MeterUsage.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="INF_MeterUsage" targetNamespace="http://schemas.esb.ams.com/meterusagesource" xmlns:bons1="http://schemas.esb.ams.com/meterusagesource" xmlns:bons2="http://AMSLib" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagesource" xmlns:bons0="http://schemas.esb.ams.com/meterusagetarget">
+      <xsd:import namespace="http://schemas.esb.ams.com/meterusagetarget" schemaLocation="BO_MeterUsageFileResponse.xsd"/>
+      <xsd:include schemaLocation="BO_MeterUsageFileRequest.xsd"/>
+      <xsd:include schemaLocation="BO_MeterUsageRequest.xsd"/>
+      <xsd:import namespace="http://AMSLib" schemaLocation="SOAPFault.xsd"/>
+      <xsd:import namespace="http://AMSLib" schemaLocation="BO_SOAPResponse.xsd"/>
+      <xsd:element name="processMeterUsage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MeterUsageReqList" nillable="true" type="bons1:BO_MeterUsageRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="processMeterUsageResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MeterUsageResponse" nillable="true" type="bons0:BO_MeterUsageFileResponse"/>
+            <xsd:element name="MeterUsageSOAPResponse" nillable="true" type="bons2:BO_SOAPResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SOAPFault_element" nillable="true" type="bons2:SOAPFault"/>
+      <xsd:element name="processMeterUsageFile">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MeterUsageFileReq" nillable="true" type="bons1:BO_MeterUsageFileRequest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="processMeterUsageFileResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="MeterUsageSOAPResponse" nillable="true" type="bons2:BO_SOAPResponse"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="processMeterUsageFile_MeterUsageFaultResponseMsg">
+    <wsdl:part element="bons1:SOAPFault_element" name="MeterUsageFaultResponse"/>
+  </wsdl:message>
+  <wsdl:message name="processMeterUsageRequestMsg">
+    <wsdl:part element="bons1:processMeterUsage" name="processMeterUsageParameters"/>
+  </wsdl:message>
+  <wsdl:message name="processMeterUsageFileResponseMsg">
+    <wsdl:part element="bons1:processMeterUsageFileResponse" name="processMeterUsageFileResult"/>
+  </wsdl:message>
+  <wsdl:message name="processMeterUsageFileRequestMsg">
+    <wsdl:part element="bons1:processMeterUsageFile" name="processMeterUsageFileParameters"/>
+  </wsdl:message>
+  <wsdl:message name="processMeterUsage_MeterUsageFaultResponseMsg">
+    <wsdl:part element="bons1:SOAPFault_element" name="MeterUsageFaultResponse"/>
+  </wsdl:message>
+  <wsdl:message name="processMeterUsageResponseMsg">
+    <wsdl:part element="bons1:processMeterUsageResponse" name="processMeterUsageResult"/>
+  </wsdl:message>
+  <wsdl:portType name="INF_MeterUsage">
+    <wsdl:operation name="processMeterUsage">
+      <wsdl:input message="bons1:processMeterUsageRequestMsg" name="processMeterUsageRequest"/>
+      <wsdl:output message="bons1:processMeterUsageResponseMsg" name="processMeterUsageResponse"/>
+      <wsdl:fault message="bons1:processMeterUsage_MeterUsageFaultResponseMsg" name="MeterUsageFaultResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="processMeterUsageFile">
+      <wsdl:input message="bons1:processMeterUsageFileRequestMsg" name="processMeterUsageFileRequest"/>
+      <wsdl:output message="bons1:processMeterUsageFileResponseMsg" name="processMeterUsageFileResponse"/>
+      <wsdl:fault message="bons1:processMeterUsageFile_MeterUsageFaultResponseMsg" name="MeterUsageFaultResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_MeterUsageFileResponse.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagetarget" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="BO_MeterUsageFileResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="dailyFileUrl">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="intervalFileUrl">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/SOAPFault.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://AMSLib" xmlns:bons0="http://AMSLib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="FaultDetailsBO.xsd"/>
+  <xsd:complexType name="SOAPFault">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="faultcode" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="faultstring" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="faulttime" type="xsd:string"></xsd:element>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="faultdetails" type="bons0:FaultDetailsBO"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/FaultDetailsBO.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://AMSLib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="FaultDetailsBO">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="errorcode" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="errormessage" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="applicationname" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="modulename" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="linenumber" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="srcsystem" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="tgtsystem" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_SOAPResponse.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://AMSLib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="BO_SOAPResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="correlationId" type="xsd:string"></xsd:element>
+      <xsd:element minOccurs="0" name="statusCode" type="xsd:string"></xsd:element>
+      <xsd:element default="def" minOccurs="0" name="statusMessage" type="xsd:string"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_MeterUsageFileRequest.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagesource" xmlns:bons0="http://schemas.esb.ams.com/meterusagesource" xmlns:bons1="http://schemas.esb.ams.com/meterusagelib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://schemas.esb.ams.com/meterusagelib" schemaLocation="BO_MeterUsageReportTypeArray.xsd"></xsd:import>
+  <xsd:complexType name="BO_MeterUsageFileRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="userId">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="userType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="1" name="reportTypeArray" type="bons1:BO_MeterUsageReportTypeArray">
+        <xsd:annotation>
+          <xsd:documentation>Daily, Interval or Both</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="reportFormat">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="3"/>
+            <xsd:maxLength value="4"/>
+            <xsd:enumeration value="CSV"/>
+            <xsd:enumeration value="MARS"/>
+            <xsd:enumeration value="csv"/>
+            <xsd:enumeration value="mars"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="fileUrl">
+        <xsd:annotation>
+          <xsd:documentation>User uploded file url</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="250"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_MeterUsageReportTypeArray.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagelib" xmlns:bons0="http://schemas.esb.ams.com/meterusagelib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:include schemaLocation="BO_MeterUsageReportType.xsd"/>
+  <xsd:complexType name="BO_MeterUsageReportTypeArray">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="reportTypeArray" type="bons0:BO_MeterUsageReportType"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_MeterUsageReportType.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagelib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="BO_MeterUsageReportType">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="reportType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="5"/>
+            <xsd:enumeration value="DAILY"/>
+            <xsd:enumeration value="INTERVAL"/>
+            <xsd:enumeration value="daily"/>
+            <xsd:enumeration value="interval"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="startDate">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="endDate">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_MeterUsageRequest.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagesource" xmlns:bons0="http://schemas.esb.ams.com/meterusagesource" xmlns:bons1="http://schemas.esb.ams.com/meterusagelib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import namespace="http://schemas.esb.ams.com/meterusagelib" schemaLocation="BO_MeterUsageReportTypeArray.xsd"></xsd:import>
+  <xsd:import namespace="http://schemas.esb.ams.com/meterusagelib" schemaLocation="BO_MeterUsageESIIDArray.xsd"></xsd:import>
+  <xsd:complexType name="BO_MeterUsageRequest">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" name="userId">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="100"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="1" name="userType">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="1" name="reportTypeArray" type="bons1:BO_MeterUsageReportTypeArray"></xsd:element>
+      <xsd:element minOccurs="0" name="reportFormat">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="CSV"/>
+            <xsd:enumeration value="MARS"/>
+            <xsd:enumeration value="csv"/>
+            <xsd:enumeration value="mars"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element maxOccurs="1" minOccurs="1" name="ESIIDArray" type="bons1:BO_MeterUsageESIIDArray"></xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://te-stage03.ilsvpn.ibm.com:9080/BIM_MeterUsageWeb/sca/WS_MeterUsageExp/wsdl/BO_MeterUsageESIIDArray.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://schemas.esb.ams.com/meterusagelib" xmlns:bons1="http://schemas.esb.ams.com/meterusagelib" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="BO_MeterUsageESIIDArray">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" minOccurs="1" name="ESIID">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="64"/>
+            <xsd:minLength value="17"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://63.100.30.79:5204/BIM_MeterUsageWeb/sca/WS_MeterUsageExp</con:endpoint><con:endpoint>https://services.smartmetertexas.net:5204/BIM_MeterUsageWeb/sca/WS_MeterUsageExp</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="processMeterUsage" bindingOperationName="processMeterUsage" type="Request-Response" outputName="processMeterUsageResponse" inputName="processMeterUsageRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Sample Meter Usage Request"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://63.100.30.79:5204/BIM_MeterUsageWeb/sca/WS_MeterUsageExp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:met="http://schemas.esb.ams.com/meterusagesource">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <met:processMeterUsage>
+         <MeterUsageReqList>
+            <userId>NDCOM</userId>
+            <userType>REP</userType>
+            <reportTypeArray>
+               <!--Zero or more repetitions:-->
+               <reportTypeArray>
+                  <reportType>INTERVAL</reportType>
+                  <startDate>01/07/2010</startDate>
+                  <endDate>02/07/2010</endDate>
+               </reportTypeArray>
+            </reportTypeArray>
+            <!--Optional:-->
+            <reportFormat>CSV</reportFormat>
+            <ESIIDArray>
+               <!--1 or more repetitions:-->
+               <ESIID>1008901023814448460103</ESIID>
+            </ESIIDArray>
+         </MeterUsageReqList>
+      </met:processMeterUsage>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schemas.esb.ams.com/meterusagesource/Binding/INF_MeterUsage/processMeterUsageRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="processMeterUsageFile" bindingOperationName="processMeterUsageFile" type="Request-Response" outputName="processMeterUsageFileResponse" inputName="processMeterUsageFileRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Sample Meter Usage File Request"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://63.100.30.79:5204/BIM_MeterUsageWeb/sca/WS_MeterUsageExp</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:met="http://schemas.esb.ams.com/meterusagesource">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <met:processMeterUsageFile>
+         <MeterUsageFileReq>
+            <userId>?</userId>
+            <userType>?</userType>
+            <reportTypeArray>
+               <!--Zero or more repetitions:-->
+               <reportTypeArray>
+                  <reportType>?</reportType>
+                  <startDate>?</startDate>
+                  <endDate>?</endDate>
+               </reportTypeArray>
+            </reportTypeArray>
+            <!--Optional:-->
+            <reportFormat>?</reportFormat>
+            <fileUrl>?</fileUrl>
+         </MeterUsageFileReq>
+      </met:processMeterUsageFile>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://schemas.esb.ams.com/meterusagesource/Binding/INF_MeterUsage/processMeterUsageFileRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
